@@ -83,10 +83,12 @@ json_t * json_pack_user_v2(struct tgl_user *U){
     if (U->bot_info->description) {
       assert (json_object_set (res, "bot_description", json_string (U->bot_info->description)) >= 0);
     }
-    assert (json_object_set (res, "peer_type", json_string ("bot")) >= 0);
+    assert (json_object_set (res, "is_bot", json_integer (1)) >= 0);
   } else {
-    assert (json_object_set (res, "peer_type", json_string ("user")) >= 0);
+    assert (json_object_set (res, "is_bot", json_integer (0)) >= 0);
   } 
+
+  assert (json_object_set (res, "peer_type", json_string ("user")) >= 0);
   
   return res;
 }
