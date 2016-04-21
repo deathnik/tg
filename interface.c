@@ -2759,7 +2759,7 @@ void print_user_info_gw (struct tgl_state *TLSR, void *extra, int success, struc
     mpop_color (ev);
   } else {
     #ifdef USE_JSON
-      json_t *res = json_pack_peer (U->id);
+      json_t *res = json_pack_user_v2 (U);
       char *s = json_dumps (res, 0);
       mprintf (ev, "%s\n", s);
       json_decref (res);
