@@ -865,9 +865,9 @@ void do_halt (int error) {
     rl_cleanup_after_signal ();
   }
 
-  if (write (1, "halt\n", 5) < 0) { 
+  //if (write (1, "halt\n", 5) < 0) { 
     // Sad thing
-  }
+  //}
  
   if (unix_socket) {
     unlink (unix_socket);
