@@ -2691,8 +2691,8 @@ void print_channel_info_gw (struct tgl_state *TLSR, void *extra, int success, st
     #ifdef USE_JSON
       json_t *res = json_pack_peer (C->id);
       tgl_peer_t *U = (void *)C;
-      if (U->flags & TGLCHF_BROADCAST) {
-        assert (json_object_set (res, "broadcast", json_integer (1)) >= 0);
+      if (U->flags & TGLCHF_MEGAGROUP) {
+        assert (json_object_set (res, "megagroup", json_integer (1)) >= 0);
       }
       char *s = json_dumps (res, 0);
       mprintf (ev, "%s\n", s);
