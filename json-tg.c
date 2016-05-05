@@ -146,6 +146,9 @@ void json_pack_chat (json_t *res, tgl_peer_t *P) {
 
 void json_pack_channel (json_t *res, tgl_peer_t *P) {
   assert (P->channel.title);
+  if (P->flags & TGLCHF_BROADCAST) {
+    assert (json_object_set (res, "broadcast", json_integer (1)) >= 0);
+  }
   assert (json_object_set (res, "title", json_string (P->channel.title)) >= 0);
   assert (json_object_set (res, "participants_count", json_integer (P->channel.participants_count)) >= 0);
   assert (json_object_set (res, "admins_count", json_integer (P->channel.admins_count)) >= 0);
