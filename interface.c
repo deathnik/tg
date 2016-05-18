@@ -2842,6 +2842,7 @@ void print_dialog_list_gw (struct tgl_state *TLSR, void *extra, int success, int
       int i;
       for (i = size - 1; i >= 0; i--) {
         json_t *a = json_pack_peer (peers[i]);
+        assert (json_object_set (a, "unread", json_integer (unread_count[i])) >= 0);
         assert (json_array_append (res, a) >= 0);
       }
       char *s = json_dumps (res, 0);
